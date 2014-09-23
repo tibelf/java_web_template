@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.jdda_collector.mybatis.mapper.AnalyticEventDataMapper">
+    <insert id="add" parameterType="com.jd.jdda_collector.mybatis.mapper.AnalyticEventDataMapper">
+        insert into analytic_event (instance_id, databaseCallCount, databaseDuration, type, timestamp, name, duration, nr_apdexPerfZone, nr_guid, nr_referringTransactionGuid, nr_tripId, nr_pathHash, nr_referringPathHash, nr_alternatePathHashes)
+        values (#{agentId}, #{databaseCallCount}, #{databaseDuration}, #{type}, #{timestamp}*1000, #{name}, #{duration}, #{nrApdexPerfZone}, #{nrGuid}, #{nrReferringTransactionGuid}, #{nrTripId}, #{nrPathHash}, #{nrReferringPathHash}, #{nrAlternatePathHashes})
+    </insert>
+</mapper>

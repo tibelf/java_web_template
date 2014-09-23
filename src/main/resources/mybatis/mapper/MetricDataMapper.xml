@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.jdda_collector.mybatis.mapper.MetricDataMapper">
+    <insert id="add" parameterType="com.jd.jdda_collector.model.MetricData">
+        insert into metric_data (instance_id, name, scope, start_time, end_time, call_count, total_call_time, total_exclusive_time, min_call_time, max_call_time, sum_of_squares)
+        values (#{agentId}, #{name}, #{scope}, #{timesliceStart}*1000, #{timesliceEnd}*1000, #{callCount}, #{totalCallTime}, #{totalExclusiveTime}, #{minCallTime},#{maxCallTime}, #{sumOfsquares})
+        <selectKey keyProperty="id" resultType="long">
+            select LAST_INSERT_ID() as id
+        </selectKey>
+    </insert>
+</mapper>

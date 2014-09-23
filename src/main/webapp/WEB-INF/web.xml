@@ -1,0 +1,49 @@
+<web-app version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>com.jd.jdda_collector</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring/root-context.xml</param-value>
+    </context-param>
+    <!-- log4j configuration -->
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:config/log4j.properties</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>log4jRefreshInterval</param-name>
+        <param-value>1000</param-value>
+    </context-param>
+
+    <!-- spring listener -->
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- spring dispatcher -->
+    <servlet>
+		<servlet-name>jdda_collector</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/restFul-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>jdda_collector</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+</web-app>
